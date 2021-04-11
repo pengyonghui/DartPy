@@ -37,13 +37,15 @@ if __name__ =="__main__":
 
         fig = plt.figure(figsize=(4,8))
         ax = fig.add_subplot(111)
+        
         # interpolate the data from each depth 
         # both methods in the following working well
 #         T2_RBS, depth_RBS,T2dist_RBS = ip.interpolation_RBS(T2, depth, T2dist)
 #         pbar = pltpcm.pltpcolormesh(T2_RBS, depth_RBS,T2dist_RBS, ax, T2dist_RBS.max())
         T2_gd, depth_gd,T2dist_gd = ip.interpolation_griddata(T2, depth, T2dist)
-        pbar = pltpcm.pltpcolormesh(T2_gd, depth_gd,T2dist_gd, ax,T2dist_gd.max())  
+        pbar = pltpcm.pltpcolormesh(T2_gd, depth_gd,T2dist_gd, ax,T2dist_gd.max())
         
+        # ax.plot(np.array(T2ml).T, depth, color = 'r', lw = 3,alpha = 0.6) # uncomment if need to plot T2ml 
         plt.colorbar(pbar)
         fig.tight_layout()
         
